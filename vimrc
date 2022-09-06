@@ -8,6 +8,10 @@ python3 del powerline_setup
 
 set laststatus=2
 
+" number lines and dark background
+set background=dark
+set number
+
 "sets powerline to look good
 set rtp+=~/.vim/plugin/powerline.vim
 
@@ -49,4 +53,3 @@ let NERDSpaceDelims=1
 " allow strikethrough for markdown and disable folding
 let g:vim_markdown_strikethrough = 1
 let g:vim_markdown_folding_disabled = 1
-
