@@ -9,5 +9,5 @@ else
   cd ~/.vim/bundle/nerdtree && git pull origin master
 fi
 
-cat ~/dotfiles/ssh/authorized_keys > .ssh/authorized_keys
+cat ~/dotfiles/ssh/authorized_keys > ~/.ssh/authorized_keys
 
