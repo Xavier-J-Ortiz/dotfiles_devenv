@@ -33,6 +33,9 @@ set modeline
 autocmd filetype ruby setlocal ts=2 sts=2 sw=2 expandtab
 autocmd filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
 autocmd filetype python setlocal ts=8 sts=4 sw=4 expandtab
+autocmd filetype sh setlocal ts=2 sts=2 sw=2 expandtab
+autocmd filetype html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd filetype json setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
