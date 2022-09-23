@@ -25,7 +25,7 @@ set paste " turn off horrible autoindent on buffer paste
 
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
-filetype off          " Enable filetype detection
+filetype on          " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 
@@ -56,3 +56,14 @@ let NERDSpaceDelims=1
 " allow strikethrough for markdown and disable folding
 let g:vim_markdown_strikethrough = 1
 let g:vim_markdown_folding_disabled = 1
+
+" ale
+let g:ale_fixers = {
+\       "*": ["remove_trailing_lines", "trim_whitespaces"],
+\       "python": ["black", "isort"],
+\}
+
+let g:ale_linter = {
+\       "python": ["flake8", "mypy", "pylint", "vulture"]
+\}
+let g:ale_fix_on_save = 1
