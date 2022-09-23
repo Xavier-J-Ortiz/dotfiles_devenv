@@ -10,7 +10,7 @@ else
 fi
 
 if [[ ! -d ~/.vim/bundle/ale ]]; then
-  git clone https://github.com/dense-analytics/ale ~/.vim/bundle/ale
+  git clone git@github.com:dense-analysis/ale.git ~/.vim/bundle/ale
 else
   cd ~/.vim/bundle/ale && git pull origin master
 fi
