@@ -59,7 +59,7 @@ let g:vim_markdown_folding_disabled = 1
 
 " ale
 let g:ale_fixers = {
-\       "*": ["remove_trailing_lines", "trim_whitespaces"],
+\       "*": ["remove_trailing_lines", "trim_whitespace"],
 \       "python": ["black", "isort"],
 \}
 
