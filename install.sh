@@ -1,6 +1,8 @@
 #!/bin/bash
 sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 
+sudo localectl set-locale LANG=en_US.UTF-8
+
 sudo add-apt-repository -y ppa:jonathonf/vim
 sudo apt update
 sudo apt-get -y install vim-gtk3 vim-scripts powerline tmux colordiff
@@ -14,7 +16,14 @@ fi
 if [[ ! -d ~/.vim/bundle/ale ]]; then
   git clone https://github.com/dense-analysis/ale.git ~/.vim/bundle/ale
 else
+  # Not sure why tthis requires an ssh key to pull
   cd ~/.vim/bundle/ale && git pull origin master
+fi
+
+if [[ ! -d ~/.vim/bundle/vim-surround ]]; then
+  git clone https://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround
+else
+  cd ~/.vim/bundle/vim-surround && git pull origin master
 fi
 
 # get some linters from pip
