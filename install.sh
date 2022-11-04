@@ -26,6 +26,12 @@ else
   cd ~/.vim/bundle/vim-surround && git pull origin master
 fi
 
+if [[ ! -d ~/.vim/bundle/vim-terraform ]]; then
+  git clone https://github.com/hashivim/vim-terraform.git ~/.vim/bundle/vim-terraform
+else
+  cd ~/.vim/bundle/vim-terraform && git pull origin master
+fi
+
 # get some linters from pip
 python3 -m pip install black==22.3.0 flake8==4.0.1 isort==5.10.1 mypy==0.950 pylint==2.13.8 vulture==2.3
 

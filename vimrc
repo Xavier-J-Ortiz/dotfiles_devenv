@@ -67,3 +67,6 @@ let g:ale_linter = {
 \       "python": ["flake8", "mypy", "pylint", "vulture"]
 \}
 let g:ale_fix_on_save = 1
+
+" vim-surround
+helptags surround/doc
