@@ -1,12 +1,28 @@
-call pathogen#infect()
 syntax on
 filetype plugin indent on
+
+" Automatic installation of vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+call plug#begin()
+Plug 'preservim/nerdtree'
+Plug 'dense-analysis/ale'
+Plug 'tpope/vim-surround'
+Plug 'hashivim/vim-terraform'
+call plug#end()
 
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
-
-set laststatus=2
 
 " number lines and dark background
 set background=dark
@@ -67,6 +83,3 @@ let g:ale_linter = {
 \       "python": ["flake8", "mypy", "pylint", "vulture"]
 \}
 let g:ale_fix_on_save = 1
-
-" vim-surround
-helptags surround/doc
