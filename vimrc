@@ -27,6 +27,9 @@ python3 del powerline_setup
 " number lines and dark background
 set background=dark
 set number
+autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
+autocmd FileType gitcommit setlocal spell spelllang=en_us
+set spellfile=~/.vim/spell/en_us.utf-8.add
 
 "sets powerline to look good
 set rtp+=~/.vim/plugin/powerline.vim
