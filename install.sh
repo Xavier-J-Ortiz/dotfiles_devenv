@@ -14,3 +14,5 @@ python3 -m pip install black==22.3.0 flake8==4.0.1 isort==5.10.1 mypy==0.950 pyl
 
 cat ~/dotfiles/ssh/authorized_keys > ~/.ssh/authorized_keys
 cat ~/dotfiles/vimrc > ~/.vimrc
+cat ~/dotfiles/tmux.conf > ~/.tmux.conf
+cat ~/dotfiles/bashrc > ~/.bashrc
