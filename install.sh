@@ -5,7 +5,7 @@ sudo localectl set-locale LANG=en_US.UTF-8
 
 sudo add-apt-repository -y ppa:jonathonf/vim
 sudo apt update
-sudo apt-get -y install vim-gtk3 vim-scripts powerline tmux colordiff
+sudo apt-get -y install vim-gtk3 vim-scripts powerline tmux colordiff python3-deepdiff
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
