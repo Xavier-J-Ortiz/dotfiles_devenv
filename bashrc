@@ -129,3 +129,6 @@ if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
   POWERLINE_BASH_SELECT=1
   source /usr/share/powerline/bindings/bash/powerline.sh
 fi
+
+# To get correct terraformer repo
+export GOPRIVATE=github.com/nefeli/terraformer
