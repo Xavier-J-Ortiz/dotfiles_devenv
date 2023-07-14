@@ -18,11 +18,14 @@ Plug 'preservim/nerdtree'
 Plug 'dense-analysis/ale'
 Plug 'tpope/vim-surround'
 Plug 'hashivim/vim-terraform'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='murmur'
 
 " number lines and dark background
 set background=dark
@@ -30,11 +33,6 @@ set number
 autocmd BufRead,BufNewFile *.md setlocal spell spelllang=en_us
 autocmd FileType gitcommit setlocal spell spelllang=en_us
 set spellfile=~/.vim/spell/en.utf-8.add
-
-"sets powerline to look good
-set rtp+=~/.vim/plugin/powerline.vim
-
-let g:Powerline_symbols = "fancy"
 
 set laststatus=2 " Always display the statusline in all windows
 set showtabline=2 " Always display the tabline, even if there is only one tab
