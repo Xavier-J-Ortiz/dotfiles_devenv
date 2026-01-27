@@ -34,4 +34,7 @@ return {
       desc = "Quickfix List (Trouble)",
     },
   },
+  -- When adding go to definitons plugins and enhancements, trouble.nvim seemed a bit redundant. But would like to 
+  -- give this a shot before removing.
+  enable = true,
 }
