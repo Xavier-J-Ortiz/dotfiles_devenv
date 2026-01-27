@@ -59,8 +59,6 @@ for server, config in pairs(servers) do
     settings = config.settings or {},
     init_options = config.init_options or {},
   }
+  vim.lsp.config(server, lspconfig[server])
+  vim.lsp.enable(server)
 end
-
-vim.lsp.config('lspconfig', lspconfig)
-vim.lsp.enable('lspconfig')
-
