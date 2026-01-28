@@ -7,7 +7,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- Setup on_attach with diagnostic keymappings only
 local on_attach = function(client, bufnr)
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  
+
   -- Hover (still useful for quick info)
   -- Moving this to `init.lua` would be great, but currently breaks `neo-tree` toggle button
   vim.keymap.set('n', 'K', '<cmd>FzfLua lsp_hover<cr>', bufopts)
@@ -28,14 +28,7 @@ local servers = {
       },
     },
   },
-  ruff = {
-    -- Ruff as linter/formatter only
-    init_options = {
-      settings = {
-        -- Any ruff-specific settings
-      }
-    }
-  },
+  ruff = {},
   lua_ls = {
     settings = {
       Lua = {
@@ -50,14 +43,15 @@ local servers = {
   },
 }
 local lspconfig = {}
--- Setup all servers using original, working lspconfig API
 for server, config in pairs(servers) do
-  -- lspconfig[server].setup({
     lspconfig[server] = {
     on_attach = on_attach,
     capabilities = capabilities,
-    settings = config.settings or {},
-    init_options = config.init_options or {},
+    -- It's better not to set settings at all than to make them an empty table
+    -- settings = config.settings or {},
+    -- init_options = config.init_options or {},
+    settings = config.settings or nil,
+    init_options = config.init_options or nil,
   }
   vim.lsp.config(server, lspconfig[server])
   vim.lsp.enable(server)
