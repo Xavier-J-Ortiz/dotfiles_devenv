@@ -1,2 +1,2 @@
-require('config.lazy')
-require('config.vim-opts')
+require("config.lazy")
+require("config.vim-opts")
