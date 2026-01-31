@@ -1,6 +1,6 @@
 -- vim.cmd.colorscheme "tokyonight-storm"
 return {
-  lazy = false,
-  priority = 1000,
-  opts = {},
+	lazy = false,
+	priority = 1000,
+	opts = {},
 }

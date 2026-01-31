@@ -1,6 +1,6 @@
 return {
-  "folke/which-key.nvim",
-  config = function ()
-    require('which-key')
-  end,
+	"folke/which-key.nvim",
+	config = function()
+		require("config.which-key")
+	end,
 }

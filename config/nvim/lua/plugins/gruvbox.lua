@@ -1,6 +1,6 @@
 return {
-  'ellisonleao/gruvbox.nvim',
-  config = function ()
-    require('config.gruvbox')
-  end,
+	"ellisonleao/gruvbox.nvim",
+	config = function()
+		require("config.gruvbox")
+	end,
 }
