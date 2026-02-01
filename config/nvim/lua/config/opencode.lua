@@ -8,6 +8,7 @@ vim.o.autoread = true
 
 -- Recommended/example keymaps.
 vim.keymap.set({ "n", "x" }, "<C-a>", function()
+	require("opencode").toggle()  -- Ensure panel opens
 	require("opencode").ask("@this: ", { submit = true })
 end, { desc = "Ask opencode…" })
 vim.keymap.set({ "n", "x" }, "<C-x>", function()
