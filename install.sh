@@ -7,9 +7,6 @@ sudo localectl set-locale LANG=en_US.UTF-8
 sudo apt update
 sudo apt-get -y install git vim-gtk3 fzf python3-venv powerline tmux colordiff xclip wl-clipboard
 
-mkdir -p ~/.fonts
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Mononoki.zip && mkdir -p ~/.fonts && unzip ./Mononoki.zip -d ~/.fonts/ && rm Noto.zip && fc-cache -f -v
-
 # install nvim from neovim/neovim-releases if not present
 if ! type nvim > /dev/null 2>&1; then
     sudo apt-get autoremove
@@ -40,4 +37,3 @@ ln -s $REPO_DIR/tmux.conf ~/.tmux.conf
 ln -s $REPO_DIR/bashrc ~/.bashrc
 ln -sn $REPO_DIR/config/nvim ~/.config/nvim
 ln -sn $REPO_DIR/config/ghostty ~/.config/ghostty
-ln -sn $REPO_DIR/config/alacritty ~/.config/alacritty
