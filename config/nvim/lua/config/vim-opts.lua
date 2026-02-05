@@ -12,3 +12,4 @@ vim.opt.softtabstop = 4 -- Inserts 4 spaces if Tab is set, and expandtab is true
 vim.opt.expandtab = true -- On enable, inserts spaces instead of tab.
 -- disable mouse support
 vim.opt.mouse = ""
+vim.opt.termguicolors = true
