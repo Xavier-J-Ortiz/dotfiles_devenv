@@ -1,4 +1,3 @@
--- use this or diagflow
 return {
 	"rachartier/tiny-inline-diagnostic.nvim",
 	event = "VeryLazy",
