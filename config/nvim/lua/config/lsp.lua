@@ -29,6 +29,7 @@ local servers = {
 		},
 	},
 	ruff = {},
+	bashls = {},
 	lua_ls = {
 		settings = {
 			Lua = {
