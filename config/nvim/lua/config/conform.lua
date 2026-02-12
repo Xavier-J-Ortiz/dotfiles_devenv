@@ -4,6 +4,7 @@ require("conform").setup({
 		lua = { "stylua" },
 		python = { "ruff" },
 		go = { "goimports", "gofumpt" },
+		bash = { "shfmt" },
 		-- Use the "*" filetype to run formatters on all filetypes.
 		["*"] = { "codespell" },
 		-- Use the "_" filetype to run formatters on filetypes that don't

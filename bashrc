@@ -92,3 +92,7 @@ if [ -f '/home/xortiz/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . 
 
 # opencode
 export PATH=/home/xortiz/.opencode/bin:$PATH
+
+# Unset IBus environment variables for Wayland compatibility
+unset GTK_IM_MODULE
+unset QT_IM_MODULE

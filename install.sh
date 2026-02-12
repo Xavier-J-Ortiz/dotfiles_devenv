@@ -4,7 +4,7 @@ sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 sudo localectl set-locale LANG=en_US.UTF-8
 
 sudo apt update
-sudo apt-get -y install git luarocks vim-gtk3 fzf python3-venv powerline tmux colordiff xclip wl-clipboard
+sudo apt-get -y install npm git luarocks vim-gtk3 fzf python3-venv pyenv powerline tmux colordiff xclip wl-clipboard
 
 # install nvim from neovim/neovim-releases if not present
 if ! type nvim > /dev/null 2>&1; then
