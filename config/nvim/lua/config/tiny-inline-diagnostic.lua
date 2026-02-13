@@ -120,7 +120,7 @@ return {
 
 		-- Events that trigger attaching diagnostics to buffers
 		-- Default is {"LspAttach"}; change only if plugin doesn't work with your LSP setup
-		overwrite_events = nil,
+		overwrite_events = { "BufWritePost", "LspAttach" },
 
 		-- Automatically disable diagnostics when opening diagnostic float windows
 		override_open_float = false,
