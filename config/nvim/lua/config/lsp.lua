@@ -8,14 +8,13 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 local on_attach = function(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
-	-- Hover (still useful for quick info)
-	-- Moving this to `init.lua` would be great, but currently breaks `neo-tree` toggle button
 	vim.keymap.set("n", "K", "<cmd>FzfLua lsp_hover<cr>", bufopts)
-	vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, bufopts)
-	vim.keymap.set("n", "]d", vim.diagnostic.goto_next, bufopts)
-	vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, bufopts)
-	vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, bufopts)
 end
+
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 
 -- Server configurations with your priorities
 local servers = {
