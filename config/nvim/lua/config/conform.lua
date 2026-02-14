@@ -11,6 +11,7 @@ require("conform").setup({
 		end,
 		go = { "goimports", "gofumpt" },
 		bash = { "shfmt" },
+		markdown = { "markdownlint-cli2" },
 		-- Use the "*" filetype to run formatters on all filetypes.
 		["*"] = { "codespell" },
 		-- Use the "_" filetype to run formatters on filetypes that don't
