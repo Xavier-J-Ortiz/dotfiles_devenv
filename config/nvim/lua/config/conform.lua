@@ -2,7 +2,13 @@ require("conform").setup({
 	-- Map of filetype to formatters
 	formatters_by_ft = {
 		lua = { "stylua" },
-		python = { "ruff" },
+		python = function(bufnr)
+			if require("conform").get_formatter_info("ruff_format", bufnr).available then
+				return { "ruff_format" }
+			else
+				return { "isort", "black" }
+			end
+		end,
 		go = { "goimports", "gofumpt" },
 		bash = { "shfmt" },
 		-- Use the "*" filetype to run formatters on all filetypes.
