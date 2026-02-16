@@ -3,10 +3,10 @@ require("lint").lint_by_ft = {
 	-- One is `vale` for `markdown`. These not specified linters are found in the
 	-- ~/.local/share/nvim/lazy/nvim-lint/lua/lint.lua file
 	go = { "golangci-lint" },
-	python = { "ruff" },
+	python = {},
 	lua = { "luacheck" },
 	bash = { "shellcheck" },
-	markdown = { "markdownlint-cli2", "vale" },
+	markdown = { "vale", "markdownlint-cli2" },
 	text = { "vale" },
 	rst = { "vale" },
 }

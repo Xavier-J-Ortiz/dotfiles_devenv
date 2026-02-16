@@ -2,15 +2,10 @@ require("conform").setup({
 	-- Map of filetype to formatters
 	formatters_by_ft = {
 		lua = { "stylua" },
-		python = function(bufnr)
-			if require("conform").get_formatter_info("ruff_format", bufnr).available then
-				return { "ruff_format" }
-			else
-				return { "isort", "black" }
-			end
-		end,
+		python = { "ruff_format" },
 		go = { "goimports", "gofumpt" },
 		bash = { "shfmt" },
+		markdown = { "prettier" },
 		-- Use the "*" filetype to run formatters on all filetypes.
 		["*"] = { "codespell" },
 		-- Use the "_" filetype to run formatters on filetypes that don't
@@ -26,7 +21,6 @@ require("conform").setup({
 	-- It will pass the table to conform.format().
 	-- This can also be a function that returns the table.
 	format_on_save = {
-		-- I recommend these options. See :help conform.format for details.
 		lsp_format = "fallback",
 		timeout_ms = 500,
 	},

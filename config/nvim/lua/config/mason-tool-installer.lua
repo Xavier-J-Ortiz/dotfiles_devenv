@@ -11,21 +11,21 @@ require("mason-tool-installer").setup({
 		"ruff", -- python linter & formatter
 		"luacheck", -- lua
 		"vale", -- markdown
-		"markdownlint-cli2", -- markdown
 		"shellcheck", -- bash
+		"codespell", -- check spelling in code
+		"markdownlint-cli2", -- markdown
 		-- formatters
-		"ty", -- python typechecker that complements `ruff`
 		"gofumpt", -- golang
 		"goimports", -- golang
 		"isort", -- python
 		"stylua", -- lua
 		"shfmt", -- bash
-		-- LSPs formerly referenced in `mason-lspconfig`, to be used in in `lsp` config.
+		"prettier", -- markdown
+		-- LSPs
 		"gopls", -- golang
-		"basedpyright", -- python
 		"lua_ls", -- lua
 		"bash-language-server", -- bash
-		-- check spelling in code
-		"codespell",
+		"marksman", -- markdown
+		"ty", -- python typechecker
 	},
 })

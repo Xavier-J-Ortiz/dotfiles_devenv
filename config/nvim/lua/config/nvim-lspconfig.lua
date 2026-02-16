@@ -18,16 +18,21 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 
 -- Server configurations with your priorities
 local servers = {
-	-- TODO: `markdown` server config missing??
 	gopls = {},
-	basedpyright = {
-		settings = {
-			analysis = {
-				typeCheckingMode = "standard",
-			},
+	ruff = {},
+	ty = {
+		cmd = {
+			"ty",
+			"server",
+		},
+		filetypes = { "python" },
+		root_markers = {
+			"pyproject.toml",
+			"setup.py",
+			"setup.cfg",
+			"requirements.txt",
 		},
 	},
-	ruff = {},
 	bashls = {},
 	lua_ls = {
 		settings = {
@@ -41,6 +46,7 @@ local servers = {
 			},
 		},
 	},
+	marksman = {},
 }
 local lspconfig = {}
 for server, config in pairs(servers) do
