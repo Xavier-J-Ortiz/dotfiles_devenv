@@ -17,7 +17,6 @@ require("mason-tool-installer").setup({
 		-- formatters
 		"gofumpt", -- golang
 		"goimports", -- golang
-		"isort", -- python
 		"stylua", -- lua
 		"shfmt", -- bash
 		"prettier", -- markdown
