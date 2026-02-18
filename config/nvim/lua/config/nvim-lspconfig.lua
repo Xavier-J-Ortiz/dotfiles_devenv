@@ -26,7 +26,7 @@ local servers = {
 			"server",
 		},
 		filetypes = { "python" },
-		root_markers = {
+		root_dir = {
 			"pyproject.toml",
 			"setup.py",
 			"setup.cfg",
