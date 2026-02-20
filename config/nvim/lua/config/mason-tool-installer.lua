@@ -26,5 +26,7 @@ require("mason-tool-installer").setup({
 		"bash-language-server", -- bash
 		"marksman", -- markdown
 		"ty", -- python typechecker
+		-- Miscellaneous tools
+		"tree-sitter-cli", -- required for nvim-treesitter
 	},
 })
