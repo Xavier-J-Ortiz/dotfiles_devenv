@@ -96,12 +96,3 @@ export PATH=/home/xortiz/.opencode/bin:$PATH
 # Unset IBus environment variables for Wayland compatibility
 unset GTK_IM_MODULE
 unset QT_IM_MODULE
-
-# pyenv stuff
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
-
-# pyenv-virtualenv stuff
-
-eval "$(pyenv virtualenv-init -)"
