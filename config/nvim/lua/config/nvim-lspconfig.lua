@@ -36,7 +36,7 @@ local servers = {
 	-- 		"requirements.txt",
 	-- 	},
 	-- },
-	pyright = {},
+	basedpyright = {},
 	bashls = {},
 	lua_ls = {
 		settings = {
