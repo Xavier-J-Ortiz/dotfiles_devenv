@@ -36,7 +36,23 @@ local servers = {
 	-- 		"requirements.txt",
 	-- 	},
 	-- },
-	basedpyright = {},
+	basedpyright = {
+		settings = {
+			basedpyright = {
+				analysis = {
+					-- typeCheckingMode = "strict", -- or "all" for the absolute maximum
+					diagnosticMode = "workspace",
+					useLibraryCodeForTypes = true,
+					autoSearchPaths = true,
+					-- Let ruff handle these.
+					diagnosticSeverityOverrides = {
+						reportUnusedImport = "none",
+						reportUnusedVariable = "none",
+					},
+				},
+			},
+		},
+	},
 	bashls = {},
 	lua_ls = {
 		settings = {
