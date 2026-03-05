@@ -20,19 +20,23 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 local servers = {
 	gopls = {},
 	ruff = {},
-	ty = {
-		cmd = {
-			"ty",
-			"server",
-		},
-		filetypes = { "python" },
-		root_dir = {
-			"pyproject.toml",
-			"setup.py",
-			"setup.cfg",
-			"requirements.txt",
-		},
-	},
+	-- Commenting out Ty for a bit to troubleshoot lspconfig.
+	-- It has been crashing. Going to use pyright as an alternative to see if the behavior is the same
+	-- If it is, just due to the python codebase, I'll revert.
+	-- ty = {
+	-- 	cmd = {
+	-- 		"ty",
+	-- 		"server",
+	-- 	},
+	-- 	filetypes = { "python" },
+	-- 	root_dir = {
+	-- 		"pyproject.toml",
+	-- 		"setup.py",
+	-- 		"setup.cfg",
+	-- 		"requirements.txt",
+	-- 	},
+	-- },
+	pyright = {},
 	bashls = {},
 	lua_ls = {
 		settings = {
