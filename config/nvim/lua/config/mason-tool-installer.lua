@@ -13,6 +13,7 @@ require("mason-tool-installer").setup({
 		"vale", -- markdown
 		"shellcheck", -- bash
 		"codespell", -- check spelling in code
+		"gitlint", -- linter for git commits
 		"markdownlint-cli2", -- markdown
 		-- formatters
 		"gofumpt", -- golang

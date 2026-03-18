@@ -7,7 +7,7 @@ require("conform").setup({
 		bash = { "shfmt" },
 		markdown = { "prettier" },
 		-- Use the "*" filetype to run formatters on all filetypes.
-		["*"] = { "codespell" },
+		-- ["*"] = { "XYZ_Formatter" },
 		-- Use the "_" filetype to run formatters on filetypes that don't
 		-- have other formatters configured.
 		["_"] = { "trim_whitespace", "trim_newlines" },
