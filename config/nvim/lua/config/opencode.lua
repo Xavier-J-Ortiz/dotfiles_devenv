@@ -1,14 +1,12 @@
 ---@type opencode.Opts
 vim.g.opencode_opts = {
-	-- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition" on the type or field.
+	-- Your configuration, if any; goto definition on the type or field for details
 }
 
--- Required for `opts.events.reload`.
-vim.o.autoread = true
+vim.o.autoread = true -- Required for `opts.events.reload`
 
--- Recommended/example keymaps.
+-- Recommended/example keymaps
 vim.keymap.set({ "n", "x" }, "<C-a>", function()
-	require("opencode").toggle()  -- Ensure panel opens
 	require("opencode").ask("@this: ", { submit = true })
 end, { desc = "Ask opencode…" })
 vim.keymap.set({ "n", "x" }, "<C-x>", function()
@@ -32,6 +30,6 @@ vim.keymap.set("n", "<S-C-d>", function()
 	require("opencode").command("session.half.page.down")
 end, { desc = "Scroll opencode down" })
 
--- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o…".
+-- You may want these if you use the opinionated `<C-a>` and `<C-x>` keymaps above — otherwise consider `<leader>o…` (and remove terminal mode from the `toggle` keymap)
 vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
 vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
