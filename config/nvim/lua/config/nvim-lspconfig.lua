@@ -8,8 +8,8 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "K", "<cmd>FzfLua lsp_hover<cr>", bufopts)
 end
 
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev({ float = false }) end)
+vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next({ float = false }) end)
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 
