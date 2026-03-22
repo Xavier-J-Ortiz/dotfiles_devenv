@@ -8,6 +8,9 @@ return {
 			"folke/snacks.nvim",
 			opts = {
 				input = {}, -- Enhances `ask()`
+				terminal = {
+					enabled = true,
+				},
 				picker = { -- Enhances `select()`
 					actions = {
 						opencode_send = function(...)
