@@ -1,3 +1,12 @@
 require("nvim-treesitter").setup({ install_dir = vim.fn.stdpath("data") .. "/site" })
 -- wait required so that there is no error when bootstrapping plugins on first run.
-require("nvim-treesitter").install({ "lua", "vimdoc", "markdown", "python", "go" }):wait(300000)
+require("nvim-treesitter")
+	.install({
+		"lua",
+		"vimdoc",
+		"markdown",
+		"python",
+		"go",
+		"bash",
+	})
+	:wait(300000)
