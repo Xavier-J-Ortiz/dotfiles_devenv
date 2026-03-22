@@ -1,6 +1,3 @@
--- TODO: Rethink if some of this config is better suited living within a plugin
--- i.e. FzfLua keybinding in fzf-lua.lua config file, vim stuff moved to vim-opts.lua
---
 -- Enhanced capabilities for blink.cmp integration
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
