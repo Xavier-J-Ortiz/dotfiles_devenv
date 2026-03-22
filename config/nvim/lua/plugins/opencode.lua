@@ -9,6 +9,9 @@ return {
 			opts = {
 				input = {}, -- Enhances `ask()`
 				terminal = {
+					-- If explicitly set to true, enables the _nvim_ integrated terminal, and not any of the
+					-- other terminal integrations.
+					-- If not present, or false, the integrated terminal takes precedence.
 					enabled = true,
 				},
 				picker = { -- Enhances `select()`
