@@ -1,5 +1,5 @@
 require("lint").linters_by_ft = {
-	go = { "golangci-lint" },
+	go = { "golangcilint" },
 	python = {},
 	lua = { "luacheck" },
 	bash = { "shellcheck" },
