@@ -72,6 +72,9 @@ if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
   # source /usr/share/powerline/bash/powerline.sh
 fi
 
+PROMPT_COMMAND="${PROMPT_COMMAND//$'\n;'/;}"
+PROMPT_COMMAND="${PROMPT_COMMAND//$'\n'/ }"
+
 #Install Path for .local/bin
 export PATH=$PATH:~/.local/bin
 
