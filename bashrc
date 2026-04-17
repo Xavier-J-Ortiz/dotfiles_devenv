@@ -59,21 +59,21 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Info for colorizing found at http://linux-sxs.org/housekeeping/lscolors.html
-#alias ls='ls --color'
-#LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90' export LS_COLORS
-
 if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
-# if [ -f /usr/share/powerline/bash/powerline.sh ]; then
   powerline-daemon -q
   POWERLINE_BASH_CONTINUATION=1
   POWERLINE_BASH_SELECT=1
   source /usr/share/powerline/bindings/bash/powerline.sh
-  # source /usr/share/powerline/bash/powerline.sh
 fi
 
-PROMPT_COMMAND="${PROMPT_COMMAND//$'\n;'/;}"
-PROMPT_COMMAND="${PROMPT_COMMAND//$'\n'/ }"
+# Info for colorizing found at http://linux-sxs.org/housekeeping/lscolors.html
+#alias ls='ls --color'
+#LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90' export LS_COLORS
+
+if [[ "$TERM" != "tmux"* ]]; then
+  PROMPT_COMMAND="${PROMPT_COMMAND//$'\n;'/;}"
+  PROMPT_COMMAND="${PROMPT_COMMAND//$'\n'/ }"
+fi
 
 #Install Path for .local/bin
 export PATH=$PATH:~/.local/bin
