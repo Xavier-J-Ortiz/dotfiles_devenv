@@ -4,6 +4,11 @@
 
 export GIT_EDITOR=vim
 
+# Start SSH agent via keychain
+if [ -z "$SSH_AUTH_SOCK" ] || ! ssh-add -l &>/dev/null; then
+  eval $(keychain --quick --eval --agents ssh id_ed25519)
+fi
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -77,8 +82,6 @@ fi
 
 #Install Path for .local/bin
 export PATH=$PATH:~/.local/bin
-
-eval $(keychain --eval id_ed25519)
 
 #Things from old .bash_profile
 export PATH=~/bin:$PATH
