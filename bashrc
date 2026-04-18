@@ -4,16 +4,27 @@
 
 export GIT_EDITOR=vim
 
-# Start SSH agent via keychain
-if [ -z "$SSH_AUTH_SOCK" ] || ! ssh-add -l &>/dev/null; then
+# If not running interactively, don't do anything
+if [[ $- != *i* ]]; then
+  return
+fi
+
+# Start SSH agent via keychain only when we have a TTY (real terminal)
+if [ -t 0 ] && { [ -z "$SSH_AUTH_SOCK" ] || ! ssh-add -l &>/dev/null; }; then
   eval $(keychain --quick --eval --agents ssh id_ed25519)
 fi
 
+=======
+>>>>>>> master
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+if [[ $- != *i* ]]; then
+  return
+fi
+
+# Start SSH agent via keychain only when we have a TTY (real terminal)
+if [ -t 0 ] && { [ -z "$SSH_AUTH_SOCK" ] || ! ssh-add -l &>/dev/null; }; then
+  eval $(keychain --quick --eval --agents ssh id_ed25519)
+fi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
