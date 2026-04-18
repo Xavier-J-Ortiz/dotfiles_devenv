@@ -9,7 +9,7 @@ fi
 
 # Start SSH agent via keychain only when we have a TTY (real terminal)
 if [ -t 0 ] && { [ -z "$SSH_AUTH_SOCK" ] || ! ssh-add -l &>/dev/null; }; then
-  eval $(keychain --quick --eval --agents ssh id_ed25519)
+  eval $(keychain --quiet --quick --eval --agents ssh id_ed25519)
 fi
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -61,13 +61,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-if [ -f /usr/share/powerline/bindings/bash/powerline.sh ]; then
-  powerline-daemon -q
-  POWERLINE_BASH_CONTINUATION=1
-  POWERLINE_BASH_SELECT=1
-  source /usr/share/powerline/bindings/bash/powerline.sh
-fi
-
 # Info for colorizing found at http://linux-sxs.org/housekeeping/lscolors.html
 #alias ls='ls --color'
 #LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90' export LS_COLORS
@@ -99,3 +92,6 @@ export PATH=/home/xortiz/.opencode/bin:$PATH
 # Unset IBus environment variables for Wayland compatibility
 unset GTK_IM_MODULE
 unset QT_IM_MODULE
+
+# Starship prompt
+eval "$(starship init bash)"
