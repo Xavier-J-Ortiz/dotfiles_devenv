@@ -1,13 +1,19 @@
 #!/bin/bash
 sudo ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
 
-sudo localectl set-locale LANG=en_US.UTF-8
+sudo localectl set-locale LANG=en_US.UTF-8 2>/dev/null || true
 
 sudo apt update
-sudo apt-get -y install curl git luarocks vim-gtk3 fzf python3-venv powerline tmux colordiff xclip wl-clipboard make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl git libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+sudo apt-get -y install curl git luarocks vim-gtk3 fzf python3-venv tmux tmux-plugin-manager colordiff xclip wl-clipboard make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl git libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
 # Install uv https://docs.astral.sh/uv/getting-started/installation/#standalone-installer
 # uv will manage the .venv and requirements
 curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install starship prompt via official script
+if ! command -v starship &>/dev/null; then
+    sudo mkdir -p /usr/local/bin
+    curl -fsSL https://starship.rs/install.sh | sudo sh -s -- -y --bin-dir /usr/local/bin
+fi
 
 
 # install nvim from neovim/neovim-releases if not present
@@ -45,6 +51,7 @@ ln -s $REPO_DIR/bashrc ~/.bashrc
 ln -sn $REPO_DIR/config/nvim ~/.config/nvim
 ln -sn $REPO_DIR/config/ghostty ~/.config/ghostty
 ln -sn $REPO_DIR/config/vale ~/.config/vale
+ln -s $REPO_DIR/config/starship.toml ~/.config/starship.toml
 # Though `vale.ini` and `vale sync` should placed and run at the root of a project, a global vale should be run in
 # order to avoid seeing linter exit 2 errors on nvim saves
 VALE_DICT_DIR="$HOME/.local/share/vale/styles/config/vocabularies/nvimDict"
