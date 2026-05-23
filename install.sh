@@ -51,6 +51,7 @@ ln -s $REPO_DIR/bashrc ~/.bashrc
 ln -sn $REPO_DIR/config/nvim ~/.config/nvim
 ln -sn $REPO_DIR/config/ghostty ~/.config/ghostty
 ln -sn $REPO_DIR/config/alacritty ~/.config/alacritty
+ln -sn $REPO_DIR/config/wezterm ~/.config/wezterm
 ln -sn $REPO_DIR/config/vale ~/.config/vale
 ln -s $REPO_DIR/config/starship.toml ~/.config/starship.toml
 # Though `vale.ini` and `vale sync` should placed and run at the root of a project, a global vale should be run in
