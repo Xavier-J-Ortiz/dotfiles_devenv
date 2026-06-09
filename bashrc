@@ -81,13 +81,13 @@ export GOPATH=$HOME/work
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/xortiz/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/home/xortiz/Downloads/google-cloud-sdk/path.bash.inc'; fi
+if [ -f "$HOME/Downloads/google-cloud-sdk/path.bash.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/path.bash.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/xortiz/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/home/xortiz/Downloads/google-cloud-sdk/completion.bash.inc'; fi
+if [ -f "$HOME/Downloads/google-cloud-sdk/completion.bash.inc" ]; then . "$HOME/Downloads/google-cloud-sdk/completion.bash.inc"; fi
 
 # opencode
-export PATH=/home/xortiz/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"
 
 # Unset IBus environment variables for Wayland compatibility
 unset GTK_IM_MODULE

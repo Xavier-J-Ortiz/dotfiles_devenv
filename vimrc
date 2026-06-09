@@ -55,7 +55,7 @@ set laststatus=2 " Always display the statusline in all windows
 set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 " set t_Co=256
-set paste " turn off horrible autoindent on buffer paste
+" set paste removed: bracketed paste in modern terminals handles this correctly
 
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
@@ -103,7 +103,7 @@ let g:ale_fixers = {
 \       "python3": ["black", "isort"],
 \}
 
-let g:ale_linter = {
+let g:ale_linters = {
 \       "python3": ["flake8", "mypy", "pylint", "vulture"],
 \       "go": ["gopls"],
 \}
