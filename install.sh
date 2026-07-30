@@ -63,7 +63,7 @@ link() {
 echo "==> Installing system packages..."
 sudo apt-get update -q
 sudo apt-get install -y \
-    alacritty curl git luarocks vim-gtk3 fzf python3-venv \
+    alacritty kitty curl git luarocks vim-gtk3 fzf python3-venv \
     tmux tmux-plugin-manager colordiff xclip wl-clipboard \
     make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev libncursesw5-dev xz-utils \
@@ -161,6 +161,7 @@ link "$REPO_DIR/bashrc"                "$HOME/.bashrc"
 link "$REPO_DIR/config/nvim"           "$HOME/.config/nvim"      y
 link "$REPO_DIR/config/ghostty"        "$HOME/.config/ghostty"   y
 link "$REPO_DIR/config/alacritty"      "$HOME/.config/alacritty" y
+link "$REPO_DIR/config/kitty"          "$HOME/.config/kitty"     y
 link "$REPO_DIR/config/wezterm"        "$HOME/.config/wezterm"   y
 link "$REPO_DIR/config/vale"           "$HOME/.config/vale"      y
 link "$REPO_DIR/config/starship.toml"  "$HOME/.config/starship.toml"
