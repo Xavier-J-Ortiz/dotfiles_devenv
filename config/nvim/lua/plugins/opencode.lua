@@ -20,10 +20,13 @@ return {
 			},
 		}
 
-		-- Can also leverage toggle functionality.
 		-- If you use <leader> here, remove 't' — otherwise Neovim will add input delay to your <leader> when typing in the terminal to watch for the mapping.
 		vim.keymap.set({ "n", "t" }, "<C-.>", function()
-			require("snacks.terminal").toggle(opencode_cmd, snacks_terminal_opts)
+			-- Toggle only the tracked terminal; `create = false` prevents spawning a duplicate pane
+			local win = require("snacks.terminal").get(opencode_cmd, { create = false })
+			if win then
+				win:toggle()
+			end
 			vim.defer_fn(function()
 				require("opencode.server.discovery").get():catch(function() end)
 			end, 1000)
