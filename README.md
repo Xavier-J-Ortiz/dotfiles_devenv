@@ -37,7 +37,15 @@ The script is safe to re-run. On each run it:
 | Linters | golangci-lint, ruff, luacheck, vale, shellcheck, codespell, markdownlint-cli2 |
 | Formatters | gofumpt, goimports, stylua, shfmt, prettier |
 | Prose linting | Vale (write-good ruleset + shared Neovim spell vocabulary) |
-| AI | opencode.nvim |
+| AI | opencode.nvim, global rules, and `/review-global-rules` |
+
+## OpenCode rules
+
+`config/opencode/AGENTS.md` is symlinked to
+`~/.config/opencode/AGENTS.md` and applies personal Git workflow rules to all
+OpenCode sessions. `/review-global-rules` reviews local, untracked observations
+at `~/.local/state/opencode/AGENTS-observations.md` and proposes global rule
+updates only after collecting sufficient user-provided evidence.
 
 ## Spell vocabulary (Vale + Neovim)
 

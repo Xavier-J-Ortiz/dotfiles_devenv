@@ -154,6 +154,8 @@ sudo localectl set-locale LANG=en_US.UTF-8 2>/dev/null || true
 echo "==> Creating symlinks..."
 
 mkdir -p "$HOME/.config"
+mkdir -p "$HOME/.local/state/opencode"
+touch "$HOME/.local/state/opencode/AGENTS-observations.md"
 
 link "$REPO_DIR/vimrc"                 "$HOME/.vimrc"
 link "$REPO_DIR/tmux.conf"             "$HOME/.tmux.conf"
@@ -165,6 +167,10 @@ link "$REPO_DIR/config/kitty"          "$HOME/.config/kitty"     y
 link "$REPO_DIR/config/wezterm"        "$HOME/.config/wezterm"   y
 link "$REPO_DIR/config/vale"           "$HOME/.config/vale"      y
 link "$REPO_DIR/config/starship.toml"  "$HOME/.config/starship.toml"
+link "$REPO_DIR/config/opencode/AGENTS.md" \
+    "$HOME/.config/opencode/AGENTS.md"
+link "$REPO_DIR/config/opencode/command/review-global-rules.md" \
+    "$HOME/.config/opencode/command/review-global-rules.md"
 
 # Vale ↔ Neovim shared spell vocabulary.
 # The spell file is gitignored (per-machine vocab); create it if absent so
