@@ -26,6 +26,8 @@
 - Logical boundaries always take precedence over the line cap: never split a
   logical change just to fit, and never bundle unrelated changes together.
 - No wip/mega-commits.
+- Don't create trivial one-line commits; fold them into a related commit
+  instead, so each commit earns its existence.
 
 ## Push / MR policy
 - Work repos (GitLab): branch name `<username>/TICKET-XXXX/kebab-case-description`
@@ -37,10 +39,26 @@
   contributors (shared/team repos).
 - Push the branch first: `git push -u origin <branch>`. Do NOT create the
   GitLab MR / GitHub PR unless explicitly asked.
+- Conditional authorization: when the user authorizes MR/PR creation on
+  stated conditions (e.g. "create it if you're highly confident"), act
+  autonomously once every condition holds; if any condition fails, stop and
+  report instead of creating.
 - Never push to main/master/default branches.
 - If the user says "just create the branch": create it locally, do not push;
   they'll review locally first.
 - After pushing, report branch name and status, then stop.
+
+## MR descriptions and test verification
+- Omit `#validation` sections from MR descriptions.
+- Use concrete, literal MR titles that name the actual change (`"Add
+  docstring"`, not `"Document"`); keep MR descriptions succinct.
+- When the user defers testing to CI ("let the CI run the tests"), do not run
+  local tests during that iteration; push and let the MR pipeline validate.
+
+## Unattended multi-step work
+- When the user approves continued execution of a multi-step plan, request
+  all required permissions upfront before continuing, so the work can
+  proceed unattended.
 
 ## MR review replies
 - When an MR has reviewer or AI CI comments, read them and suggest reply
@@ -51,6 +69,10 @@
   code alters the flagged behavior and the comment links to that changed
   code. In that case note "no reply needed" (or acknowledge briefly) and
   move on.
+
+## Ticket hygiene
+- During an active implementation task, do not propose or create unrelated
+  follow-up tickets; surface them only when asked.
 
 ## Rule evolution
 - This file is a living document, but never edit it on your own: propose
@@ -73,6 +95,9 @@
     - date: YYYY-MM-DD | task: <task> | repo: <repo> | confidence: explicit|repeated
       evidence: "<verbatim instruction or factual correction>"
   ```
+- Candidates the user declines are marked `status: declined` with a
+  `declined:` date and reason; the review skips them unless new distinct
+  evidence emerges.
 - `explicit` is an always/never-style directive. `repeated` is a recurring
   instruction or correction. `/review-global-rules` proposes explicit
   directives with 1-2 observations and repeated patterns with at least 3
