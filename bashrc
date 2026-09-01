@@ -2,6 +2,9 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+export EDITOR="nvim"
+export VISUAL="nvim"
+
 # If not running interactively, don't do anything
 if [[ $- != *i* ]]; then
   return
@@ -20,8 +23,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=20000
+HISTSIZE=50000
+HISTFILESIZE=200000
 HISTTIMEFORMAT="%Y-%m-%dT%H:%M:%S%z "
 
 # check the window size after each command and, if necessary,
