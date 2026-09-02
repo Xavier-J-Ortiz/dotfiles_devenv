@@ -1,6 +1,6 @@
 return {
 	"folke/trouble.nvim",
-	opts = require("config.trouble"),
+	opts = {},
 	cmd = "Trouble",
 	keys = {
 		{
