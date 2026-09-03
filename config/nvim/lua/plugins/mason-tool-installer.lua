@@ -1,7 +1,32 @@
 return {
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
-	config = function()
-		require("config.mason-tool-installer")
-	end,
-	enabled = true,
+	opts = {
+		-- Add linters and formatters only. LSPs are installed in the `mason-lspconfig` config.
+		ensure_installed = {
+			-- linters
+			"golangci-lint", -- golang
+			"ruff", -- python linter & formatter
+			"luacheck", -- lua
+			"vale", -- markdown
+			"shellcheck", -- bash
+			"codespell", -- check spelling in code
+			"gitlint", -- linter for git commits
+			"markdownlint-cli2", -- markdown
+			-- formatters
+			"gofumpt", -- golang
+			"goimports", -- golang
+			"stylua", -- lua
+			"shfmt", -- bash
+			"prettier", -- markdown
+			-- LSPs
+			"gopls", -- golang
+			"lua_ls", -- lua
+			"bash-language-server", -- bash
+			"marksman", -- markdown
+			"ty", -- python typechecker
+			"basedpyright", -- python typechecker
+			-- Miscellaneous tools
+			"tree-sitter-cli", -- required for nvim-treesitter
+		},
+	},
 }
