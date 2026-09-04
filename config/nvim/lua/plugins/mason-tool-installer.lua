@@ -1,7 +1,6 @@
 return {
 	"WhoIsSethDaniel/mason-tool-installer.nvim",
 	opts = {
-		-- Add linters and formatters only. LSPs are installed in the `mason-lspconfig` config.
 		ensure_installed = {
 			-- linters
 			"golangci-lint", -- golang
