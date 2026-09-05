@@ -19,9 +19,16 @@
   backticks around file/metric names, 2-space-indented nested bullets,
   trailing periods. Multi-ticket: one `- TICKET - explanation` bullet each.
 
+## Writing style
+- In commit messages and MR descriptions, use periods or commas instead of em
+  dashes or semicolons to separate phrases or sentences.
+
 ## Commit organization
 - One logical change per commit; each commit self-contained and standalone,
   with a reason it exists on its own.
+- For stacked MR series, keep each MR's logically related changes in one
+  review-friendly commit. Split only when the changes form distinct, meaningful
+  review units.
 - Prefer under 100 changed lines per commit (soft cap; hard max 150).
 - Logical boundaries always take precedence over the line cap: never split a
   logical change just to fit, and never bundle unrelated changes together.
