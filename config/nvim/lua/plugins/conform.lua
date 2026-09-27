@@ -8,7 +8,7 @@ return {
 			go = { "goimports", "gofumpt" },
 			bash = { "shfmt" },
 			markdown = { "prettier" },
-			gitcommit = { "system_fmt" },
+			gitcommit = {}, -- Use Git's native wrapping, not Conform.
 			-- Use the "*" filetype to run formatters on all filetypes.
 			-- ["*"] = { "XYZ_Formatter" },
 			-- Use the "_" filetype to run formatters on filetypes that don't
@@ -20,11 +20,6 @@ return {
 			prettier = {
 				prepend_args = { "--prose-wrap", "always", "--print-width", "80" },
 			},
-			system_fmt = {
-				command = "fmt",
-				args = { "-w", "72" },
-				stdin = true,
-			},
 		},
 		-- Set this to change the default values when calling conform.format()
 		-- This will also affect the default values for format_on_save/format_after_save
@@ -34,16 +29,28 @@ return {
 		-- If this is set, Conform will run the formatter on save.
 		-- It will pass the table to conform.format().
 		-- This can also be a function that returns the table.
-		format_on_save = {
-			lsp_format = "fallback",
-			timeout_ms = 500,
-		},
+		format_on_save = function(bufnr)
+			-- Keep Git's native wrapping while typing, but don't reformat an
+			-- entire commit buffer (including Git's commented template) on save.
+			if vim.bo[bufnr].filetype == "gitcommit" then
+				return nil
+			end
+
+			return {
+				lsp_format = "fallback",
+				timeout_ms = 500,
+			}
+		end,
 		-- If this is set, Conform will run the formatter asynchronously after save.
 		-- It will pass the table to conform.format().
 		-- This can also be a function that returns the table.
-		format_after_save = {
-			lsp_format = "fallback",
-		},
+		format_after_save = function(bufnr)
+			if vim.bo[bufnr].filetype == "gitcommit" then
+				return nil
+			end
+
+			return { lsp_format = "fallback" }
+		end,
 		-- Set the log level. Use `:ConformInfo` to see the location of the log file.
 		log_level = vim.log.levels.ERROR,
 		-- Conform will notify you when a formatter errors
