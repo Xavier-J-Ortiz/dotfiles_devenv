@@ -19,6 +19,7 @@ bash install.sh
 ```
 
 The script is safe to re-run. On each run it:
+
 - **Skips** symlinks that are already correct.
 - **Backs up** any existing file that would be overwritten to
   `~/.dotfiles-backup/<timestamp>/` before replacing it.
@@ -26,25 +27,25 @@ The script is safe to re-run. On each run it:
 
 ## What's configured
 
-| Domain | Tool(s) |
-|---|---|
-| Shell | Bash + [Starship](https://starship.rs) prompt |
-| Terminals | Alacritty, Ghostty, WezTerm (all use Mononoki Nerd Font 11pt) |
-| Multiplexer | tmux with tmux-powerkit (github-dark theme, weather/datetime/battery/cpu/mem/git) |
-| Editor | Neovim (lazy.nvim, Mason-managed LSP/lint/format toolchain) |
-| Fallback editor | Vim with vim-plug |
-| LSPs | gopls, ruff, basedpyright, ty, bash-language-server, lua_ls, marksman |
-| Linters | golangci-lint, ruff, luacheck, vale, shellcheck, codespell, markdownlint-cli2 |
-| Formatters | gofumpt, goimports, stylua, shfmt, prettier |
-| Prose linting | Vale (write-good ruleset + shared Neovim spell vocabulary) |
-| AI | opencode.nvim, global rules, and `/review-global-rules` |
+| Domain          | Tool(s)                                                                           |
+| --------------- | --------------------------------------------------------------------------------- |
+| Shell           | Bash + [Starship](https://starship.rs) prompt                                     |
+| Terminals       | Alacritty, Ghostty, WezTerm (all use Mononoki Nerd Font 11pt)                     |
+| Multiplexer     | tmux with tmux-powerkit (github-dark theme, weather/datetime/battery/cpu/mem/git) |
+| Editor          | Neovim (lazy.nvim, Mason-managed LSP/lint/format toolchain)                       |
+| Fallback editor | Vim with vim-plug                                                                 |
+| LSPs            | gopls, ruff, basedpyright, bash-language-server, lua_ls, marksman                 |
+| Linters         | golangci-lint, ruff, luacheck, vale, shellcheck, codespell, markdownlint-cli2     |
+| Formatters      | gofumpt, goimports, stylua, shfmt, prettier                                       |
+| Prose linting   | Vale (write-good ruleset + shared Neovim spell vocabulary)                        |
+| AI              | opencode.nvim, global rules, and `/review-global-rules`                           |
 
 ## OpenCode rules
 
-`config/opencode/AGENTS.md` is symlinked to
-`~/.config/opencode/AGENTS.md` and applies personal Git workflow rules to all
-OpenCode sessions. `/review-global-rules` reviews local, untracked observations
-at `~/.local/state/opencode/AGENTS-observations.md` and proposes global rule
+`config/opencode/AGENTS.md` is symlinked to `~/.config/opencode/AGENTS.md` and
+applies personal Git workflow rules to all OpenCode sessions.
+`/review-global-rules` reviews local, untracked observations at
+`~/.local/state/opencode/AGENTS-observations.md` and proposes global rule
 updates only after collecting sufficient user-provided evidence.
 
 ## Spell vocabulary (Vale + Neovim)

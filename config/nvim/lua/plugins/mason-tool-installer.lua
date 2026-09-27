@@ -22,7 +22,6 @@ return {
 			"lua_ls", -- lua
 			"bash-language-server", -- bash
 			"marksman", -- markdown
-			"ty", -- python typechecker
 			"basedpyright", -- python typechecker
 			-- Miscellaneous tools
 			"tree-sitter-cli", -- required for nvim-treesitter
