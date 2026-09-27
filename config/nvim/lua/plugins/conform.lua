@@ -8,7 +8,7 @@ return {
 			go = { "goimports", "gofumpt" },
 			bash = { "shfmt" },
 			markdown = { "prettier" },
-			gitcommit = { "git_wrap" },
+			gitcommit = { "system_fmt" },
 			-- Use the "*" filetype to run formatters on all filetypes.
 			-- ["*"] = { "XYZ_Formatter" },
 			-- Use the "_" filetype to run formatters on filetypes that don't
@@ -20,13 +20,10 @@ return {
 			prettier = {
 				prepend_args = { "--prose-wrap", "always", "--print-width", "80" },
 			},
-			git_wrap = {
-				format = function(bufnr)
-					-- Enfoce 72 char margin for buffer.
-					vim.bo[bufnr].textwidth = 72
-					-- run internal nvim command to format the entier file.
-					vim.cmd("normal! gggqG")
-				end,
+			system_fmt = {
+				command = "fmt",
+				args = { "-w", "72" },
+				stdin = true,
 			},
 		},
 		-- Set this to change the default values when calling conform.format()
