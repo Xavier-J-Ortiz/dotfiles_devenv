@@ -1,8 +1,8 @@
 return {
 	"nickjvandyke/opencode.nvim",
-	version = "*", -- Latest stable release
+	branch = "main", -- Temporary: restore version = "*" once stable supports OpenCode v2.
 	config = function()
-		local opencode_cmd = "opencode --port"
+		local opencode_cmd = "opencode"
 		---@type snacks.terminal.Opts
 		local snacks_terminal_opts = {
 			win = {
@@ -20,29 +20,19 @@ return {
 			},
 		}
 
+		-- Can also leverage toggle functionality.
 		-- If you use <leader> here, remove 't' — otherwise Neovim will add input delay to your <leader> when typing in the terminal to watch for the mapping.
 		vim.keymap.set({ "n", "t" }, "<C-.>", function()
-			-- Toggle only the tracked terminal; `create = false` prevents spawning a duplicate pane
-			local win = require("snacks.terminal").get(opencode_cmd, { create = false })
-			if win then
-				win:toggle()
-			end
-			vim.defer_fn(function()
-				require("opencode.server.discovery").get():catch(function() end)
-			end, 1000)
+			require("snacks.terminal").toggle(opencode_cmd, snacks_terminal_opts)
 		end, { desc = "Toggle OpenCode" })
 
-		-- Optionally show upon submitting prompt
+		-- Optionally show the terminal when OpenCode starts executing
 		vim.api.nvim_create_autocmd("User", {
-			pattern = { "OpencodeEvent:tui.command.execute" },
-			callback = function(args)
-				---@type opencode.server.Event
-				local event = args.data.event
-				if event.properties.command == "prompt.submit" then
-					local win = require("snacks.terminal").get(opencode_cmd, { create = false })
-					if win then
-						win:show()
-					end
+			pattern = { "OpencodeEvent:session.execution.started" },
+			callback = function()
+				local win = require("snacks.terminal").get(opencode_cmd, { create = false })
+				if win then
+					win:show()
 				end
 			end,
 		})
@@ -55,16 +45,10 @@ return {
 			require("opencode").select()
 		end, { desc = "Select OpenCode…" })
 		vim.keymap.set({ "n", "x" }, "go", function()
-			return require("opencode").operator("@this ")
-		end, { desc = "Append range to OpenCode", expr = true })
+			return require("opencode").operator("@this")
+		end, { desc = "Send range to OpenCode", expr = true })
 		vim.keymap.set({ "n" }, "goo", function()
-			return require("opencode").operator("@this ") .. "_"
-		end, { desc = "Append line to OpenCode", expr = true })
-		vim.keymap.set({ "n" }, "<S-C-u>", function()
-			require("opencode").command("session.half.page.up")
-		end, { desc = "Scroll OpenCode up" })
-		vim.keymap.set({ "n" }, "<S-C-d>", function()
-			require("opencode").command("session.half.page.down")
-		end, { desc = "Scroll OpenCode down" })
+			return require("opencode").operator("@this") .. "_"
+		end, { desc = "Send line to OpenCode", expr = true })
 	end,
 }
