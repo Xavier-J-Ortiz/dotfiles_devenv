@@ -20,6 +20,15 @@ return {
 			},
 		}
 
+		-- The v2 service persists after Neovim exits, so actions below must reveal
+		-- this terminal themselves. `server.start` runs only when none exists.
+		local function show_opencode()
+			local terminal = require("snacks.terminal").get(opencode_cmd, snacks_terminal_opts)
+			if terminal and not terminal:win_valid() then
+				terminal:show()
+			end
+		end
+
 		-- Can also leverage toggle functionality.
 		-- If you use <leader> here, remove 't' — otherwise Neovim will add input delay to your <leader> when typing in the terminal to watch for the mapping.
 		vim.keymap.set({ "n", "t" }, "<C-.>", function()
@@ -39,15 +48,19 @@ return {
 
 		-- Recommended/example keymaps
 		vim.keymap.set({ "n", "x" }, "<C-a>", function()
+			show_opencode()
 			require("opencode").ask("@this: ")
 		end, { desc = "Ask OpenCode…" })
 		vim.keymap.set({ "n", "x" }, "<C-x>", function()
+			show_opencode()
 			require("opencode").select()
 		end, { desc = "Select OpenCode…" })
 		vim.keymap.set({ "n", "x" }, "go", function()
+			show_opencode()
 			return require("opencode").operator("@this")
 		end, { desc = "Send range to OpenCode", expr = true })
 		vim.keymap.set({ "n" }, "goo", function()
+			show_opencode()
 			return require("opencode").operator("@this") .. "_"
 		end, { desc = "Send line to OpenCode", expr = true })
 	end,
