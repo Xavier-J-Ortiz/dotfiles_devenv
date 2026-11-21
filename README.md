@@ -43,7 +43,7 @@ The script is safe to re-run. On each run it:
 ## OpenCode rules
 
 `config/opencode/AGENTS.md` is symlinked to `~/.config/opencode/AGENTS.md` and
-applies personal Git workflow rules to all OpenCode sessions.
+applies global agent rules to all OpenCode sessions.
 `/review-global-rules` reviews local, untracked observations at
 `~/.local/state/opencode/AGENTS-observations.md` and proposes global rule
 updates only after collecting sufficient user-provided evidence.
