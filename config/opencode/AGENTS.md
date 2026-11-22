@@ -48,8 +48,11 @@
 
 ## Writing style
 
-- In commit messages and MR descriptions, use periods or commas instead of em
-  dashes or semicolons to separate phrases or sentences.
+- In any prose you draft or edit, use periods or commas instead of em dashes or
+  semicolons to separate phrases or sentences. Dashes in other roles are fine.
+  Do not sweep existing text outside your edits unless asked.
+- Open a commit message body or MR/PR description with why the change is needed,
+  then explain the approach and what changed.
 
 ## Commit organization
 
@@ -65,6 +68,13 @@
 - Don't create trivial one-line commits; fold them into a related commit
   instead, so each commit earns its existence.
 
+## Code changes
+
+- Optimize code for readability and reviewability by an engineer with no
+  context. Prefer the smallest implementation that meets the requirement, and
+  keep comments focused on intent.
+- Prefer focused, representative tests over exhaustive parameter matrices.
+
 ## Push / MR policy
 
 - Work repos (GitLab): branch name
@@ -75,13 +85,15 @@
   not. Never include the username in GitHub branch names: it is implicit on
   personal repos, and only add it on GitHub when there is a critical mass of
   contributors (shared/team repos).
-- Push the branch first: `git push -u origin <branch>`. Do NOT create the GitLab
-  MR / GitHub PR unless explicitly asked.
+- Push the branch first, once it has at least one commit with a diff:
+  `git push -u origin <branch>`. Do not push an empty branch for review. Do NOT
+  create the GitLab MR / GitHub PR unless explicitly asked.
 - Conditional authorization: when the user authorizes MR/PR creation on stated
   conditions (e.g. "create it if you're highly confident"), act autonomously
   once every condition holds; if any condition fails, stop and report instead of
   creating.
-- Never push to main/master/default branches.
+- Never push to main/master/default branches, unless the repository's own
+  `AGENTS.md` documents a different push policy. The repository's policy wins.
 - If the user says "just create the branch": create it locally, do not push;
   they'll review locally first.
 - After pushing, report branch name and status, then stop.
@@ -102,7 +114,19 @@
   required permissions upfront before continuing, so the work can proceed
   unattended.
 
-## MR review replies
+## Sessions and workspace
+
+- Work the topic the user named as the priority. Do not front-load
+  de-prioritized work.
+- For multi-session local work, keep a handoff or status document in the
+  workspace so a fresh OpenCode session can continue without relying on chat
+  history.
+- Create durable ticket worktrees inside the ticket's working folder, not under
+  `~/`.
+- Do not kill or restart tmux or terminal sessions while other work may be
+  active. Ask before any action that would stop them.
+
+## MR reviews
 
 - When an MR has reviewer or AI CI comments, read them and suggest reply text to
   the user where a reply adds value. NEVER post replies or resolve threads
@@ -111,11 +135,26 @@
   self-evidently addressed by the code itself - e.g. a single change in the code
   alters the flagged behavior and the comment links to that changed code. In
   that case note "no reply needed" (or acknowledge briefly) and move on.
+- When the user asks you to address a review, address all findings and nits in
+  one pass, not only the major ones.
+
+## Outbound communication
+
+- Draft outbound comments, messages, and mentions for the user to post. Do not
+  post them, tag people, or name individual reviewers without explicit approval.
 
 ## Ticket hygiene
 
 - During an active implementation task, do not propose or create unrelated
   follow-up tickets; surface them only when asked.
+- Do not create a Jira ticket unless the user explicitly asks for one. Approval
+  to publish a document is not approval to create a ticket.
+- Write Jira tickets in human, outcome-first language. Use a short outcome
+  title, then describe the problem, the intent, and what done looks like. Keep
+  evidence dumps and implementation detail out of the description.
+- Jira text must stand alone, so a reader can get started without opening any
+  other document. Link a shared document for more detail when one exists, but
+  never depend on it, and never reference local files or their sections.
 
 ## Rule evolution
 
